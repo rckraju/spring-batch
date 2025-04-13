@@ -1,0 +1,58 @@
++---------------------------+
+|     BatchJobConfig       |
++---------------------------+
+| - job(JobRepository)     |
+| - step(StepBuilderFactory)|
++---------------------------+
+         |
+         v
++---------------------------+
+|     FlatFileItemReader   |
++---------------------------+
+| - resource: file         |
+| - lineMapper             |
++---------------------------+
+         |
+         v
++---------------------------+
+|     TransactionItemProcessor |
++---------------------------+
+| - process(Transaction)   |
++---------------------------+
+         |
+         v
++---------------------------+
+|     JdbcBatchItemWriter  |
++---------------------------+
+| - dataSource             |
+| - SQL Insert             |
++---------------------------+
+         |
+         v
++---------------------------+
+|     Transaction Entity   |
++---------------------------+
+| - id                     |
+| - accountNumber          |
+| - trxAmount              |
+| - description            |
+| - trxDate                |
+| - trxTime                |
+| - customerId             |
++---------------------------+
+         |
+         v
++---------------------------+
+| TransactionRepository     |
+| extends JpaRepository     |
++---------------------------+
+
+        |
+        v
++-----------------------------+
+|  TransactionRestController  |
++-----------------------------+
+| - getAllTransactions()     |
+| - getByCustomerId(id)      |
+| - updateTransaction()      |
++-----------------------------+
