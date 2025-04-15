@@ -23,8 +23,6 @@ public class JwtService {
     // Generate token with given user name
     public String generateToken(UserDetails user) {
         Map<String, Object> claims = new HashMap<>();
-        Map<String, String> userInfoMap = new HashMap<>();
-        claims.put("userInfo", userInfoMap);
         claims.put("ts", new Date());
         return createToken(claims, user.getUsername());
     }
